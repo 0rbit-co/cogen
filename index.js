@@ -30,34 +30,46 @@ const openai = new OpenAI({
  *
  * @returns {void}
  */
+
 app.post("/generate", async (req, res) => {
-  const { prompt } = /** @type {RequestBody} */ (req.body);
+  const { topic } = req.body;
+  const prompt = `
+    Write a detailed and engaging blog post on the topic: "${topic}".
+    The blog should include an introduction, several informative and well-structured sections, and a conclusion.
+    Make sure the content is written in a friendly and conversational tone, providing useful insights and tips.
+    Use subheadings, bullet points, and examples where appropriate.
+    The blog should be around 800-1000 words long.
+  `;
 
   try {
     /**
      * Request a completion from the OpenAI API.
-    */
+     */
     const completion = await openai.completions.create({
       model: "gpt-3.5-turbo-instruct",
       prompt,
-      max_tokens: 8,
-      temperature: 0,
+      max_tokens: 150,
+      temperature: 0.7,
+      top_p: 0.9,
+      presence_penalty: 0.6,
+      frequency_penalty: 0.5,
     });
 
     // Extract the text from the API response
     let output = completion.choices[0].text;
 
     // Replace escaped newline characters with actual newlines
-    output = output.replace(/\\n/g, '\n');
+    output = output.replace(/\\n/g, "\n");
+    output = output.replace(/\n/g, "");
 
-    // Log the output to the console
-    console.log(output);
+    const jsonOutput = JSON.stringify({ output: output });
+    console.log(typeof jsonOutput);
 
     // Set the response content type to plain text
-    res.setHeader('Content-Type', 'text/plain');
+    res.setHeader("Content-Type", "text/plain");
 
     // Send the formatted output as the response
-    res.status(200).send(output);
+    res.status(200).send(jsonOutput);
   } catch (error) {
     // Log any errors to the console
     console.error(error);
