@@ -21,7 +21,7 @@ app.post("/generate", async (req, res) => {
       temperature: 0,
     });
     console.log(completion);
-
+    res.status(200).json(completion);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "An error occurred during Blog Generation" });
