@@ -38,7 +38,8 @@ const openai = new OpenAI({
  * @returns {void}
  */
 app.post("/generate", async (req, res) => {
-  const { topic, processID } = req.body;
+  const { topic, pid } = req.body;
+
   const prompt = `
     Write a detailed and engaging blog post on the topic: "${topic}".
     The blog should include an introduction, several informative and well-structured sections, and a conclusion.
@@ -64,49 +65,17 @@ app.post("/generate", async (req, res) => {
     // Extract the text from the API response
     let output = completion.choices[0].text;
 
-    // Replace escaped newline characters with actual newlines
-    output = output.replace(/\\n/g, "\n");
-    output = output.replace(/\n/g, "");
-
-    // Store the generated blog post in memory
-    generatedBlogPost = output;
-    generatedProcess = processID;
-
-    let j = {
-      process: generatedProcess,
-      output: generatedBlogPost,
-    };
-    console.log("Generated blog is: ", output);
-    console.log("JSON", JSON.stringify(j));
+    console.log("Response Sent");
 
     res
       .status(200)
-      .json({ process: generatedProcess, output: generatedBlogPost });
+      .json({ process: pid, data: output });
   } catch (error) {
     // Log any errors to the console
     console.error(error);
 
     // Send an error response with status 500
     res.status(500).json({ error: "An error occurred during Blog Generation" });
-  }
-});
-
-/**
- * GET /blog
- * Retrieves the generated blog post.
- *
- * @param {express.Request} req - The request object.
- * @param {express.Response} res - The response object.
- *
- * @returns {void}
- */
-app.get("/blog", (req, res) => {
-  if (generatedBlogPost) {
-    res
-      .status(200)
-      .json({ process: generatedProcess, output: generatedBlogPost });
-  } else {
-    res.status(404).json({ error: "No blog post generated yet" });
   }
 });
 
