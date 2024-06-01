@@ -43,7 +43,11 @@ Handlers.add(
     "ReceiveResponse",
     Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
     function(msg)
-        local res = msg.Data
-        print(res)
+        local res = json.decode(msg.Data)
+        print("Received response from AI: " .. type(res))
+        for key, value in pairs(res) do
+            print(key .. ": " .. tostring(value))
+        end
+        print("Done")
     end
 )

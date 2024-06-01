@@ -72,6 +72,13 @@ app.post("/generate", async (req, res) => {
     generatedBlogPost = output;
     generatedProcess = processID;
 
+    let j = {
+      process: generatedProcess,
+      output: generatedBlogPost,
+    };
+    console.log("Generated blog is: ", output);
+    console.log("JSON", JSON.stringify(j));
+
     res
       .status(200)
       .json({ process: generatedProcess, output: generatedBlogPost });
