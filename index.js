@@ -1,6 +1,7 @@
 import express from "express";
 import OpenAI from "openai";
 import dotenv from "dotenv";
+import cors from 'cors';
 
 // Load environment variables from a .env file into process.env
 dotenv.config();
@@ -9,6 +10,11 @@ const app = express();
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+// Middleware to enable CORS
+app.use(cors());
+
+// In-memory storage for the generated blog post
+let generatedBlogPost = '';
 
 /**
  * Initialize OpenAI with the API key from environment variables
@@ -30,7 +36,6 @@ const openai = new OpenAI({
  *
  * @returns {void}
  */
-
 app.post("/generate", async (req, res) => {
   const { topic } = req.body;
   const prompt = `
@@ -62,20 +67,33 @@ app.post("/generate", async (req, res) => {
     output = output.replace(/\\n/g, "\n");
     output = output.replace(/\n/g, "");
 
-    const jsonOutput = JSON.stringify({ output: output });
-    console.log(typeof jsonOutput);
+    // Store the generated blog post in memory
+    generatedBlogPost = output;
 
-    // Set the response content type to plain text
-    res.setHeader("Content-Type", "text/plain");
-
-    // Send the formatted output as the response
-    res.status(200).send(jsonOutput);
+    res.status(200).json({ message: 'Blog generated successfully' });
   } catch (error) {
     // Log any errors to the console
     console.error(error);
 
     // Send an error response with status 500
-    res.status(500).json({ error: "An error occurred during Blog Generation" });
+    res.status(500).json({ error: 'An error occurred during Blog Generation' });
+  }
+});
+
+/**
+ * GET /blog
+ * Retrieves the generated blog post.
+ *
+ * @param {express.Request} req - The request object.
+ * @param {express.Response} res - The response object.
+ *
+ * @returns {void}
+ */
+app.get("/blog", (req, res) => {
+  if (generatedBlogPost) {
+    res.status(200).json({ output: generatedBlogPost });
+  } else {
+    res.status(404).json({ error: 'No blog post generated yet' });
   }
 });
 
