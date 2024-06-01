@@ -70,7 +70,7 @@ app.post("/generate", async (req, res) => {
     // Store the generated blog post in memory
     generatedBlogPost = output;
 
-    res.status(200).json({ message: 'Blog generated successfully' });
+    res.status(200).json({ output: generatedBlogPost });
   } catch (error) {
     // Log any errors to the console
     console.error(error);
