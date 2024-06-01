@@ -9,7 +9,6 @@
 --     ["X-Body"] = json.encode({})
 -- })
 local json = require('json')
-local ao = require('ao')
 
 _0RBIT = "BaMK1dfayo75s3q1ow6AO64UDpD9SEFbeE8xYrY2fyQ"
 _0RBT_TOKEN = "BUhZLMwQ6yZHguLtJYA5lLUa9LQzLXMXRfaq9FVcPJc"
@@ -23,7 +22,7 @@ Handlers.add(
     function(msg)
         local url = "https://ai-blog-ad8c.onrender.com/generate"
         local title = msg.Tags.Topic
-        local processID = msg.Tags.ProcessID
+        local processID = msg.Tags.Process
         local body = {
             topic = title,
             pid = processID
@@ -44,9 +43,7 @@ Handlers.add(
     "ReceiveResponse",
     Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
     function(msg)
-        local processID = msg.Tags.ProcessID
-        local res = json.decode(msg.Data)
+        local res = msg.Data
         print(res)
-        RESPONSE_TABLE[processID] = res
     end
 )
