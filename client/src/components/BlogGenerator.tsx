@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createMessage, executeDryrun } from "../utils/getBlog";
 
 const BlogGenerator = () => {

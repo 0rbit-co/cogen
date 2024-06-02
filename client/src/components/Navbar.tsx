@@ -1,7 +1,6 @@
-import { useConnection, ConnectButton } from "arweave-wallet-kit";
+import { ConnectButton } from "arweave-wallet-kit";
 import logo from "../assets/logo.svg";
 const Navbar = () => {
-  const { connected } = useConnection();
   return (
     <div className="flex justify-between p-8">
       <div>
