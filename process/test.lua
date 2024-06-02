@@ -8,6 +8,7 @@ Handlers.add(
         local decoded = json.decode(res)
         print("Received response from AI (type): " .. type(res))
         print("Received response from AI (decoded): " .. type(decoded))
+        print(msg.Timestamp)
 
         -- Print the contents of the decoded table
         for key, value in pairs(decoded) do

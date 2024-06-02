@@ -26,7 +26,7 @@ export const executeDryrun = async (msg: any) => {
       tags: [{ name: "Action", value: "Get-Response" }],
     });
 
-    console.log("Messages: ", Messages.Messages[0].Tags);
+    console.log("Messages: ", Messages);
     console.log("Length of Tags: ", Messages.Messages[0].Tags.length);
 
     await window.arweaveWallet.connect(["ACCESS_ADDRESS"]);
@@ -34,7 +34,7 @@ export const executeDryrun = async (msg: any) => {
     console.log("Your wallet address is", userAddress);
 
     for (let i = 0; i < Messages.Messages[0].Tags.length; i++) {
-      console.log(i, " : ", Messages.Messages[0].Tags[i].name);
+      // console.log(i, " : ", Messages.Messages[0].Tags[i].name);
       if (userAddress === Messages.Messages[0].Tags[i].name) {
         return Messages.Messages[0].Tags[i].value;
       }
