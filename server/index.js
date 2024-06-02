@@ -13,10 +13,6 @@ app.use(express.json());
 // Middleware to enable CORS
 app.use(cors());
 
-// In-memory storage for the generated blog post
-let generatedBlogPost = "";
-let generatedProcess = "";
-
 /**
  * Initialize OpenAI with the API key from environment variables
  * @type {OpenAI}

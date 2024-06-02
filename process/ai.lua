@@ -10,7 +10,7 @@ Handlers.add(
     "PostTopic",
     Handlers.utils.hasMatchingTag("Action", "Post-Topic"),
     function(msg)
-        local url = "https://harmless-ibex-champion.ngrok-free.app/generate"
+        local url = "https://ai-blog-ad8c.onrender.com/generate"
         local title = msg.Topic
         local processID = msg.From
         local body = {
@@ -35,9 +35,18 @@ Handlers.add(
     Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
     function(msg)
         local res = json.decode(msg.Data)
+        print(res)
 
         RESPONSE_TABLE[res.process] = res.data
 
         print(Colors.red .. "Received Response from 0rbit💫")
+    end
+)
+
+Handlers.add(
+    "GetResponse",
+    Handlers.utils.hasMatchingTag("Action", "Get-Response"),
+    function(msg)
+        Handlers.utils.reply(RESPONSE_TABLE)(msg)
     end
 )

@@ -1,59 +1,72 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import { createMessage, executeDryrun } from "../utils/getBlog";
 
-const BlogGenerator: React.FC = () => {
-  const [topic, setTopic] = useState('');
-  const [output, setOutput] = useState('');
-  const [error, setError] = useState('');
+const BlogGenerator = () => {
+  const [topic, setTopic] = useState("");
+  const [heading, setHeading] = useState("");
+  const [msg, setMsg] = useState("");
 
-  const handleGenerateAndFetch = async () => {
+  const handleSendTopic = async () => {
     try {
-      // Generate the blog post
-      await axios.post('http://localhost:3000/generate', { topic });
-      console.log('Blog Generated Successfully');
+      const generatedMsg = await createMessage(topic);
+      setMsg(generatedMsg);
+      console.log("Generated Message: ", generatedMsg);
+    } catch (error) {
+      console.error("Error sending topic:", error);
+    }
+  };
 
-      // Fetch the generated blog post
-      const response = await axios.get('http://localhost:3000/blog');
-      console.log('Blog Fetched Successfully');
-      setOutput(response.data.output);
-      setError('');
-    } catch (err) {
-      setError('An error occurred during Blog Generation or Fetching');
-      setOutput('');
+  const handleGetBlog = async () => {
+    try {
+      if (msg) {
+        const generatedHeading = await executeDryrun(msg);
+        console.log("Generated Heading: ", generatedHeading);
+        setHeading(generatedHeading);
+      } else {
+        console.error("Message is not set. Please send the topic first.");
+        setHeading("Error generating blog");
+      }
+    } catch (error) {
+      console.error("Error getting blog:", error);
+      setHeading("Error generating blog");
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="w-full max-w-lg p-8 bg-white rounded shadow-md">
-        <h1 className="mb-6 text-2xl font-bold text-center">Blog Generator</h1>
-        <div className="mb-4">
-          <label htmlFor="topic" className="block mb-2 text-sm font-medium text-gray-700">Enter Topic</label>
-          <input
-            type="text"
-            id="topic"
-            value={topic}
-            onChange={(e) => setTopic(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="Enter the topic for your blog"
-          />
-        </div>
-        <button
-          onClick={handleGenerateAndFetch}
-          className="w-full py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+    <div className="flex flex-col items-center justify-center">
+      <button
+        onClick={handleSendTopic}
+        className="w-full py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 mb-4"
+      >
+        Send Topic
+      </button>
+      <button
+        onClick={handleGetBlog}
+        className="w-full py-2 text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+      >
+        Get Blog
+      </button>
+      <div className="mb-4">
+        <label
+          htmlFor="topic"
+          className="block mb-2 text-sm font-medium text-gray-700"
         >
-          Generate and Fetch
-        </button>
-        {output && (
-          <div className="mt-6">
-            <h2 className="mb-2 text-xl font-semibold">Generated Blog:</h2>
-            <p className="p-4 bg-gray-100 border border-gray-200 rounded">{output}</p>
-          </div>
-        )}
-        {error && (
-          <div className="mt-6 text-red-500">{error}</div>
-        )}
+          Enter Topic
+        </label>
+        <input
+          type="text"
+          id="topic"
+          value={topic}
+          onChange={(e) => setTopic(e.target.value)}
+          className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter the topic for your blog"
+        />
       </div>
+      {heading && (
+        <div className="mt-6 p-4 bg-gray-200 rounded">
+          <div className="text-xl font-bold">{heading}</div>
+        </div>
+      )}
     </div>
   );
 };
