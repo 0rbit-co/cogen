@@ -86,7 +86,7 @@ const BlogGenerator = () => {
       </div>
       <div className="w-full flex justify-center">
         {loading && (
-          <div className="border-2 border-[#25291C] w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center">
+          <div className="border-2 bg-[#DADCD4] border-[#82857A] w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center">
             <div className="text-xl font-bold flex">
               <div className="circle"></div>
               <div className="circle"></div>
@@ -97,7 +97,7 @@ const BlogGenerator = () => {
       </div>
       <div className="w-full flex justify-center">
         {!loading && heading && (
-        <div className="border-2 border-[#25291C] w-3/4 p-4 justify-evenly rounded-lg mt-10 min-h-80 flex items-center">
+        <div className="border-2 bg-[#DADCD4] border-[#82857A] w-3/4 p-4 justify-evenly rounded-lg mt-10 min-h-80 flex items-center">
             <div className="text-[#25291C] flex justify-center items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide">{heading}</div>
           </div>
         )}
