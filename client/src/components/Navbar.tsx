@@ -4,6 +4,7 @@ import lightLogo from "../assets/lightLogo.svg";
 import ThemeSwitch from "./ThemeSwitch";
 import { useTheme } from "../context/ThemeContext";
 import ReactGA from "react-ga4";
+import ReactGA from "react-ga4";
 
 const Navbar = () => {
   const { isDark } = useTheme();
@@ -66,7 +67,7 @@ const Navbar = () => {
             className={`rounded-[7px] w-20 flex items-center font-semibold font-lg justify-center ${
               isDark
                 ? "bg-[#E3E5DE] text-[#25291C]"
-                : "bg-[#25291C] text-[#E3E5DE] border-black border-[1px] "
+                : "bg-[#25291C] text-[#E3E5DE] border-black border-[1px]"
             }`}
           >
             Docs
@@ -83,7 +84,7 @@ const Navbar = () => {
             className={`rounded-[7px] w-20 flex items-center font-semibold font-lg justify-center ${
               isDark
                 ? "bg-[#E3E5DE] text-[#25291C]"
-                : "bg-[#25291C] text-[#E3E5DE] border-black border-[1px] "
+                : "bg-[#25291C] text-[#E3E5DE] border-black border-[1px]"
             }`}
           >
             Blogs
