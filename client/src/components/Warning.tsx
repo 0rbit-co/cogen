@@ -12,7 +12,7 @@ const Warning = () => {
       }`}
     >
       <p>
-        Currently you can only generate text for ~300 words only due to API rate
+        Currently you can only generate text for ~300 words due to API rate
         limit
       </p>
     </div>
