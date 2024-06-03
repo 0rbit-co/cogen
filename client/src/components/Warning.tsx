@@ -8,7 +8,7 @@ const Warning = () => {
       className={`${
         isDark
           ? "text-[#B4B99F]"
-          : "border-2 border-[#D16D1B] px-4 py-1 bg-[#D16D1B]/20 text-[#D16D1B] rounded-lg"
+          : "text-[#25291C]"
       }`}
     >
       <p>

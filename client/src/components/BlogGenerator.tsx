@@ -16,7 +16,7 @@ const BlogGenerator = () => {
       const generatedMsg = await createMessage(topic);
       setMsg(generatedMsg);
       console.log("Generated Message: ", generatedMsg);
-
+      console.log(msg);
       const runWithRetry = async (
         msg: any,
         retryDelay = 2000,
@@ -85,18 +85,18 @@ const BlogGenerator = () => {
             onChange={(e) => setTopic(e.target.value)}
             className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${
               isDark
-                ? "border-[#DCE6C2] text-[#DCE6C2]"
-                : "border-black text-black"
+                ? "border-[#485330] text-[#DCE6C2]"
+                : "border-[#25291C] text-[#25291C]"
             }`}
             placeholder="Add Your Topic Here"
           />
         </div>
         <button
           onClick={handleGenerateBlog}
-          className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
+          className={`w-40 py-2 border-2 font-semibold rounded-md focus:outline-none ${
             isDark
               ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
-              : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
+              : "text-white bg-[#25291C] border-transparent hover:bg-transparent hover:border-2 hover:border-[#25291C] hover:text-[#25291C]"
           }`}
         >
           Generate Blog!
@@ -107,8 +107,8 @@ const BlogGenerator = () => {
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${
               isDark
-                ? "bg-[#404536]/20 border-gray-500"
-                : "bg-gray-200 border-gray-400"
+                ? "bg-[#404536]/20 border-[#485330]"
+                : "bg-[#DADCD4] border-[#82857A]"
             }`}
           >
             <div className="text-xl font-bold flex">
@@ -130,7 +130,7 @@ const BlogGenerator = () => {
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${
               isDark
-                ? "bg-[#404536]/20 border-gray-500"
+                ? "bg-[#404536]/20 border-[#485330]"
                 : "bg-gray-200 border-gray-400"
             }`}
           >
