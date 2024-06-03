@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { createMessage, executeDryrun } from "../utils/getBlog";
 import Warning from "./Warning";
+import { useTheme } from "../context/ThemeContext";
 
 const BlogGenerator = () => {
   const [topic, setTopic] = useState("");
   const [heading, setHeading] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const { isDark } = useTheme();
+  const darkMode = isDark ? "dark" : "";
 
   const handleGenerateBlog = async () => {
     setLoading(true);
@@ -61,8 +64,12 @@ const BlogGenerator = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center pt-10">
-      <div className="text-center text-stone-800 text-[35px] font-medium font-raleway leading-[44.93px]">
+    <div
+      className={`flex flex-col items-center justify-center pt-10 ${
+        isDark ? "bg-transparent text-white" : "bg-transparent text-black"
+      }`}
+    >
+      <div className="text-center text-[35px] font-medium font-raleway leading-[44.93px]">
         Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet
         consectetur
       </div>
@@ -73,20 +80,32 @@ const BlogGenerator = () => {
             id="topic"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className="w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 border-black px-6"
+            className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${
+              isDark ? "border-white text-white" : "border-black text-black"
+            }`}
             placeholder="Add Your Topic Here"
           />
         </div>
         <button
           onClick={handleGenerateBlog}
-          className="w-40 py-2 text-white bg-[#25291C] border-2 border-transparent rounded-md hover:bg-transparent hover:border-2 hover:border-[#25291C] hover:text-[#25291C] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
+            isDark
+              ? "text-black bg-white border-transparent hover:bg-transparent hover:border-2 hover:border-white hover:text-white"
+              : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
+          }`}
         >
           Generate Blog!
         </button>
       </div>
       <div className="w-full flex justify-center">
         {loading && (
-          <div className="border-2 bg-[#DADCD4] border-[#82857A] w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center">
+          <div
+            className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${
+              isDark
+                ? "bg-gray-700 border-gray-500"
+                : "bg-gray-200 border-gray-400"
+            }`}
+          >
             <div className="text-xl font-bold flex">
               <div className="circle"></div>
               <div className="circle"></div>
@@ -97,13 +116,25 @@ const BlogGenerator = () => {
       </div>
       <div className="w-full flex justify-center">
         {!loading && heading && (
-        <div className="border-2 bg-[#DADCD4] border-[#82857A] w-3/4 p-4 justify-evenly rounded-lg mt-10 min-h-80 flex items-center">
-            <div className="text-[#25291C] flex justify-center items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide">{heading}</div>
+          <div
+            className={`border-2 w-3/4 p-4 justify-evenly rounded-lg mt-10 min-h-80 flex items-center ${
+              isDark
+                ? "bg-gray-700 border-gray-500"
+                : "bg-gray-200 border-gray-400"
+            }`}
+          >
+            <div
+              className={`flex justify-center items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide ${
+                isDark ? "text-white" : "text-black"
+              }`}
+            >
+              {heading}
+            </div>
           </div>
         )}
       </div>
       <div className="py-8">
-      <Warning />
+        <Warning />
       </div>
     </div>
   );

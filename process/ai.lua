@@ -17,6 +17,7 @@ Handlers.add(
             topic = title,
             pid = processID
         }
+        RESPONSE_TABLE[processID] = nil
         Send({
             Target = _0RBT_TOKEN,
             Action = "Transfer",
@@ -30,19 +31,6 @@ Handlers.add(
     end
 )
 
--- Handlers.add(
---     "ReceiveResponse",
---     Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
---     function(msg)
---         local res = json.decode(msg.Data)
---         print(res)
-
---         RESPONSE_TABLE[res.process] = res.data
-
---         print(Colors.red .. "Received Response from 0rbit💫")
---     end
--- )
-
 Handlers.add(
     "ReceiveResponse",
     Handlers.utils.hasMatchingTag("Action", "Receive-Response"),
@@ -53,10 +41,6 @@ Handlers.add(
         RESPONSE_TABLE[res.process] = res.data
 
         print(Colors.red .. "Received Response from 0rbit💫")
-
-        -- Update the RESPONSE_TABLE with the latest data
-        RESPONSE_TABLE[res.pid] = res.data
-        print(Colors.red .. "Updated RESPONSE_TABLE with the latest data💫")
     end
 )
 
