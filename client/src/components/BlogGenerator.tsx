@@ -9,7 +9,6 @@ const BlogGenerator = () => {
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
   const { isDark } = useTheme();
-  const darkMode = isDark ? "dark" : "";
 
   const handleGenerateBlog = async () => {
     setLoading(true);
@@ -43,7 +42,7 @@ const BlogGenerator = () => {
               retryDelay
             );
           } else {
-            setHeading("Error generating blog");
+            setHeading("Please Try Again!");
             setLoading(false);
           }
         }
@@ -53,12 +52,12 @@ const BlogGenerator = () => {
         await runWithRetry(generatedMsg);
       } else {
         console.error("Message is not set. Please send the topic first.");
-        setHeading("Error generating blog");
+        setHeading("Please Try Again!");
         setLoading(false);
       }
     } catch (error) {
       console.error("Error sending topic:", error);
-      setHeading("Error generating blog");
+      setHeading("Please Try Again!");
       setLoading(false);
     }
   };
@@ -69,7 +68,11 @@ const BlogGenerator = () => {
         isDark ? "bg-transparent text-white" : "bg-transparent text-black"
       }`}
     >
-      <div className="text-center text-[35px] font-medium font-raleway leading-[44.93px]">
+      <div
+        className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${
+          isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
+        }`}
+      >
         Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet
         consectetur
       </div>
@@ -81,7 +84,9 @@ const BlogGenerator = () => {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${
-              isDark ? "border-white text-white" : "border-black text-black"
+              isDark
+                ? "border-[#DCE6C2] text-[#DCE6C2]"
+                : "border-black text-black"
             }`}
             placeholder="Add Your Topic Here"
           />
@@ -90,7 +95,7 @@ const BlogGenerator = () => {
           onClick={handleGenerateBlog}
           className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
             isDark
-              ? "text-black bg-white border-transparent hover:bg-transparent hover:border-2 hover:border-white hover:text-white"
+              ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
               : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
           }`}
         >
@@ -102,14 +107,20 @@ const BlogGenerator = () => {
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${
               isDark
-                ? "bg-gray-700 border-gray-500"
+                ? "bg-[#404536]/20 border-gray-500"
                 : "bg-gray-200 border-gray-400"
             }`}
           >
             <div className="text-xl font-bold flex">
-              <div className="circle"></div>
-              <div className="circle"></div>
-              <div className="circle"></div>
+              <div
+                className={`circle ${isDark ? "bg-[#8C957B]" : "bg-[#25291C]"}`}
+              ></div>
+              <div
+                className={`circle ${isDark ? "bg-[#8C957B]" : "bg-[#25291C]"}`}
+              ></div>
+              <div
+                className={`circle ${isDark ? "bg-[#8C957B]" : "bg-[#25291C]"}`}
+              ></div>
             </div>
           </div>
         )}
@@ -117,15 +128,15 @@ const BlogGenerator = () => {
       <div className="w-full flex justify-center">
         {!loading && heading && (
           <div
-            className={`border-2 w-3/4 p-4 justify-evenly rounded-lg mt-10 min-h-80 flex items-center ${
+            className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${
               isDark
-                ? "bg-gray-700 border-gray-500"
+                ? "bg-[#404536]/20 border-gray-500"
                 : "bg-gray-200 border-gray-400"
             }`}
           >
             <div
-              className={`flex justify-center items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide ${
-                isDark ? "text-white" : "text-black"
+              className={`flex justify-center px-10 items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide ${
+                isDark ? "text-[#F6FAE3]" : "text-[#25291C]"
               }`}
             >
               {heading}
