@@ -17,8 +17,8 @@ const BlogGenerator = () => {
     try {
       const generatedMsg = await createMessage(topic);
       setMsg(generatedMsg);
-      console.log("Generated Message: ", msg);
-
+      console.log("Generated Message: ", generatedMsg);
+      console.log(msg);
       const runWithRetry = async (
         msg: any,
         retryDelay = 5000,
