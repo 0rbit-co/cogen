@@ -85,8 +85,8 @@ const BlogGenerator = () => {
             onChange={(e) => setTopic(e.target.value)}
             className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${
               isDark
-                ? "border-[#485330] text-[#DCE6C2]"
-                : "border-[#25291C] text-[#25291C]"
+                ? "border-[#485330] text-[#DCE6C2] bg-[#404536]"
+                : "border-[#82857A] text-[#25291C] bg-[#DADCD4]"
             }`}
             placeholder="Add Your Topic Here"
           />
