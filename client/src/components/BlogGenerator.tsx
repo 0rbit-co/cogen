@@ -93,7 +93,10 @@ const BlogGenerator = () => {
         </div>
         <button
           onClick={handleGenerateBlog}
+          disabled={loading}
           className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
+            loading ? "cursor-not-allowed" : ""
+          } ${
             isDark
               ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
               : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
