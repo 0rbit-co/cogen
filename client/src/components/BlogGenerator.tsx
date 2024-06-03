@@ -15,11 +15,11 @@ const BlogGenerator = () => {
     try {
       const generatedMsg = await createMessage(topic);
       setMsg(generatedMsg);
-      console.log("Generated Message: ", generatedMsg);
+      console.log("Generated Message: ", msg);
 
       const runWithRetry = async (
         msg: any,
-        retryDelay = 2000,
+        retryDelay = 5000,
         retryCount = 0
       ) => {
         try {
@@ -64,14 +64,12 @@ const BlogGenerator = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center pt-10 ${
-        isDark ? "bg-transparent text-white" : "bg-transparent text-black"
-      }`}
+      className={`flex flex-col items-center justify-center pt-10 ${isDark ? "bg-transparent text-white" : "bg-transparent text-black"
+        }`}
     >
       <div
-        className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${
-          isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
-        }`}
+        className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
+          }`}
       >
         Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet
         consectetur
@@ -83,24 +81,21 @@ const BlogGenerator = () => {
             id="topic"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${
-              isDark
-                ? "border-[#DCE6C2] text-[#DCE6C2]"
-                : "border-black text-black"
-            }`}
+            className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${isDark
+              ? "border-[#DCE6C2] text-[#DCE6C2]"
+              : "border-black text-black"
+              }`}
             placeholder="Add Your Topic Here"
           />
         </div>
         <button
           onClick={handleGenerateBlog}
           disabled={loading}
-          className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${
-            loading ? "cursor-not-allowed" : ""
-          } ${
-            isDark
+          className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "cursor-not-allowed" : ""
+            } ${isDark
               ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
               : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
-          }`}
+            }`}
         >
           Generate Blog!
         </button>
@@ -108,11 +103,10 @@ const BlogGenerator = () => {
       <div className="w-full flex justify-center">
         {loading && (
           <div
-            className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${
-              isDark
-                ? "bg-[#404536]/20 border-gray-500"
-                : "bg-gray-200 border-gray-400"
-            }`}
+            className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${isDark
+              ? "bg-[#404536]/20 border-gray-500"
+              : "bg-gray-200 border-gray-400"
+              }`}
           >
             <div className="text-xl font-bold flex">
               <div
@@ -131,16 +125,14 @@ const BlogGenerator = () => {
       <div className="w-full flex justify-center">
         {!loading && heading && (
           <div
-            className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${
-              isDark
-                ? "bg-[#404536]/20 border-gray-500"
-                : "bg-gray-200 border-gray-400"
-            }`}
+            className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${isDark
+              ? "bg-[#404536]/20 border-gray-500"
+              : "bg-gray-200 border-gray-400"
+              }`}
           >
             <div
-              className={`flex justify-center px-10 items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide ${
-                isDark ? "text-[#F6FAE3]" : "text-[#25291C]"
-              }`}
+              className={`flex justify-center px-10 items-center text-xl font-semibold font-['Raleway'] leading-[25px] tracking-wide ${isDark ? "text-[#F6FAE3]" : "text-[#25291C]"
+                }`}
             >
               {heading}
             </div>
