@@ -99,8 +99,8 @@ const BlogGenerator = () => {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${isDark
-                ? "border-[#485330] text-[#DCE6C2] bg-[#373c2b]"
-                : "border-[#82857A] text-[#25291C] bg-[#DADCD4]"
+              ? "border-[#485330] text-[#DCE6C2] bg-[#373c2b]"
+              : "border-[#82857A] text-[#25291C] bg-[#DADCD4]"
               }`}
             placeholder="Add Your Topic Here"
             required
@@ -108,11 +108,9 @@ const BlogGenerator = () => {
         </div>
         <button
           onClick={handleGenerateBlog}
-          disabled={loading}
-          className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "cursor-not-allowed" : ""
-            } ${isDark
-              ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
-              : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
+          className={`w-40 py-2 border-2 font-semibold rounded-md focus:outline-none ${isDark
+              ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
+              : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
             }`}
         >
           Generate Blog!
@@ -139,8 +137,8 @@ const BlogGenerator = () => {
         {loading && (
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${isDark
-              ? "bg-[#404536]/20 border-gray-500"
-              : "bg-gray-200 border-gray-400"
+                ? "bg-[#404536]/20 border-[#485330]"
+                : "bg-[#CFD1CA] border-[#82857A]"
               }`}
           >
             <div className="text-xl font-bold flex">
@@ -161,8 +159,8 @@ const BlogGenerator = () => {
         {!loading && heading && (
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${isDark
-              ? "bg-[#404536]/20 border-gray-500"
-              : "bg-gray-200 border-gray-400"
+                ? "bg-[#404536]/20 border-[#485330]"
+                : "bg-[#CFD1CA] border-gray-400"
               }`}
           >
             <div
