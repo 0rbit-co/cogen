@@ -95,8 +95,8 @@ const BlogGenerator = () => {
           onClick={handleGenerateBlog}
           className={`w-40 py-2 border-2 font-semibold rounded-md focus:outline-none ${
             isDark
-              ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
-              : "text-white bg-[#25291C] border-transparent hover:bg-transparent hover:border-2 hover:border-[#25291C] hover:text-[#25291C]"
+              ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
+              : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
           }`}
         >
           Generate Blog!
@@ -108,7 +108,7 @@ const BlogGenerator = () => {
             className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${
               isDark
                 ? "bg-[#404536]/20 border-[#485330]"
-                : "bg-[#DADCD4] border-[#82857A]"
+                : "bg-[#CFD1CA] border-[#82857A]"
             }`}
           >
             <div className="text-xl font-bold flex">
@@ -131,7 +131,7 @@ const BlogGenerator = () => {
             className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${
               isDark
                 ? "bg-[#404536]/20 border-[#485330]"
-                : "bg-gray-200 border-gray-400"
+                : "bg-[#CFD1CA] border-gray-400"
             }`}
           >
             <div
