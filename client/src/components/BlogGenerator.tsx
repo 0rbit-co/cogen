@@ -57,7 +57,7 @@ const BlogGenerator = () => {
       }
     } catch (error) {
       console.error("Error sending topic:", error);
-      setHeading("Connect your Wallet!");
+      setHeading("Connect your Wallet to continue!");
       setLoading(false);
     }
   };
@@ -85,7 +85,7 @@ const BlogGenerator = () => {
             className={`w-[705px] h-[52px] rounded-[7px] border-2 px-6 ${
               isDark
                 ? "border-[#485330] text-[#F6FAE3] bg-[#404536] placeholder:text-[#F6FAE3] font-wide"
-                : "border-[#82857A] text-[#F6FAE3] bg-[#DADCD4] placeholder:text-[#F6FAE3]"
+                : "border-[#7C8073] text-[#000000] bg-[#DADCD4] placeholder:text-[#25291C]/80"
             }`}
             placeholder="Add Your Topic Here"
             required
@@ -93,7 +93,7 @@ const BlogGenerator = () => {
         </div>
         <button
           onClick={handleGenerateBlog}
-          className={`w-40 py-2 border-2 font-semibold rounded-md focus:outline-none ${
+          className={`w-40 h-[52px] border-2 font-semibold rounded-md focus:outline-none ${
             isDark
               ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
               : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
@@ -108,7 +108,7 @@ const BlogGenerator = () => {
             className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${
               isDark
                 ? "bg-[#404536]/20 border-[#485330]"
-                : "bg-[#CFD1CA] border-[#82857A]"
+                : "bg-[#DADCD4] border-[#7C8073]"
             }`}
           >
             <div className="text-xl font-bold flex">
@@ -131,7 +131,7 @@ const BlogGenerator = () => {
             className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${
               isDark
                 ? "bg-[#404536]/20 border-[#485330]"
-                : "bg-[#CFD1CA] border-gray-400"
+                : "bg-[#DADCD4] border-[#7C8073]"
             }`}
           >
             <div

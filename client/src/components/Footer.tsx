@@ -34,7 +34,7 @@ const Footer = () => {
   return (
     <div
       className={`w-full flex justify-between py-2 px-20 text-[#EB8F44] ${
-        isDark ? "bg-[#373C2B]" : "bg-[#373C2B]"
+        isDark ? "bg-[#373C2B]" : "bg-[#25291C]"
       }`}
     >
       <div>&copy; 2024 0rbit</div>
@@ -56,7 +56,7 @@ const Footer = () => {
           <FaXTwitter className="text-2xl cursor-pointer" />
         </a>
         <a 
-          href="https://github.com/0rbit-co" 
+          href="https://github.com/0rbit-co/ai-blog" 
           target="_blank" 
           rel="noopener noreferrer"
           onClick={handleGithubClick}
