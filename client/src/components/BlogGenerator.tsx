@@ -59,8 +59,7 @@ const BlogGenerator = () => {
       }
     } catch (error) {
       console.error("Error sending topic:", error);
-      setHeading("Connect your Wallet!");
-      setHeading("Connect your Wallet!");
+      setHeading("Connect your Wallet to continue!");
       setLoading(false);
     }
   };
@@ -100,7 +99,7 @@ const BlogGenerator = () => {
             onChange={(e) => setTopic(e.target.value)}
             className={`w-[705px] h-[52px] rounded-[7px] border-2 px-6 ${isDark
               ? "border-[#485330] text-[#F6FAE3] bg-[#404536] placeholder:text-[#F6FAE3] font-wide"
-              : "border-[#82857A] text-[#F6FAE3] bg-[#DADCD4] placeholder:text-[#F6FAE3]"
+              : "border-[#7C8073] text-[#000000] bg-[#DADCD4] placeholder:text-[#25291C]/80"
               }`}
             placeholder="Add Your Topic Here"
             required
@@ -160,7 +159,7 @@ const BlogGenerator = () => {
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${isDark
               ? "bg-[#404536]/20 border-[#485330]"
-              : "bg-[#CFD1CA] border-gray-400"
+              : "bg-[#DADCD4] border-[#7C8073]"
               }`}
           >
             <div
