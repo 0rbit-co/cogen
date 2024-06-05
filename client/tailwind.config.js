@@ -8,6 +8,7 @@ export default {
     extend: {
       fontFamily: {
         raleway: ['Raleway', 'sans-serif'],
+        jetbrains: ['JetBrains Mono', 'monospace']
       },
     },
   },

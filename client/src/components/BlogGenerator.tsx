@@ -57,7 +57,7 @@ const BlogGenerator = () => {
       }
     } catch (error) {
       console.error("Error sending topic:", error);
-      setHeading("Please Try Again!");
+      setHeading("Connect your Wallet!");
       setLoading(false);
     }
   };
@@ -73,8 +73,7 @@ const BlogGenerator = () => {
           isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
         }`}
       >
-        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet
-        consectetur
+        Generate content through your AO Process using <span className="font-jetbrains text-[#EB8F44]">0rbit</span>
       </div>
       <div className="flex items-center gap-8 mt-8">
         <div className="">
@@ -89,6 +88,7 @@ const BlogGenerator = () => {
                 : "border-[#82857A] text-[#F6FAE3] bg-[#DADCD4] placeholder:text-[#F6FAE3]"
             }`}
             placeholder="Add Your Topic Here"
+            required
           />
         </div>
         <button
