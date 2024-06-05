@@ -64,7 +64,7 @@ const Navbar = () => {
           <div
             className={`rounded-[7px] w-20 flex items-center font-semibold font-lg justify-center ${
               isDark
-                ? "bg-[#E3E5DE] text-[#25291C]"
+                ? "bg-[#DCE6C2] text-[#25291C]"
                 : "bg-[#25291C] text-[#E3E5DE] border-black border-[1px]"
             }`}
           >
@@ -80,7 +80,7 @@ const Navbar = () => {
           <div
             className={`rounded-[7px] w-20 flex items-center font-semibold font-lg justify-center ${
               isDark
-                ? "bg-[#E3E5DE] text-[#25291C]"
+                ? "bg-[#DCE6C2] text-[#25291C]"
                 : "bg-[#25291C] text-[#E3E5DE] border-black border-[1px]"
             }`}
           >
