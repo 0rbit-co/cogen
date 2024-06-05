@@ -60,6 +60,7 @@ const BlogGenerator = () => {
     } catch (error) {
       console.error("Error sending topic:", error);
       setHeading("Connect your Wallet!");
+      setHeading("Connect your Wallet!");
       setLoading(false);
     }
   };
@@ -88,8 +89,7 @@ const BlogGenerator = () => {
         className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
           }`}
       >
-        Generate content through your AO Process using{" "}
-        <span className="font-jetbrains text-[#EB8F44]">0rbit</span>
+        Generate content through your AO Process using <span className="font-jetbrains text-[#EB8F44]">0rbit</span>
       </div>
       <div className="flex items-center gap-8 mt-8">
         <div className="">
@@ -99,8 +99,8 @@ const BlogGenerator = () => {
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
             className={`w-[705px] h-[52px] rounded-[7px] border-2 px-6 ${isDark
-                ? "border-[#485330] text-[#F6FAE3] bg-[#404536] placeholder:text-[#F6FAE3] font-wide"
-                : "border-[#82857A] text-[#F6FAE3] bg-[#DADCD4] placeholder:text-[#F6FAE3]"
+              ? "border-[#485330] text-[#F6FAE3] bg-[#404536] placeholder:text-[#F6FAE3] font-wide"
+              : "border-[#82857A] text-[#F6FAE3] bg-[#DADCD4] placeholder:text-[#F6FAE3]"
               }`}
             placeholder="Add Your Topic Here"
             required
