@@ -20,8 +20,8 @@ const BlogGenerator = () => {
       console.log("Generated Message: ", generatedMsg);
       console.log(msg);
       const runWithRetry = async (
-        msg: any,
-        retryDelay = 5000,
+        msg: string,
+        retryDelay = 2000,
         retryCount = 0
       ) => {
         try {
@@ -98,9 +98,9 @@ const BlogGenerator = () => {
             id="topic"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${isDark
-                ? "border-[#485330] text-[#DCE6C2] bg-[#404536]"
-                : "border-[#82857A] text-[#25291C] bg-[#DADCD4]"
+            className={`w-[705px] h-[52px] rounded-[7px] border-2 px-6 ${isDark
+                ? "border-[#485330] text-[#F6FAE3] bg-[#404536] placeholder:text-[#F6FAE3] font-wide"
+                : "border-[#82857A] text-[#F6FAE3] bg-[#DADCD4] placeholder:text-[#F6FAE3]"
               }`}
             placeholder="Add Your Topic Here"
             required
