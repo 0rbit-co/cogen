@@ -3,7 +3,6 @@ import { FaXTwitter } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext";
 import ReactGA from "react-ga4";
-import ReactGA from "react-ga4";
 
 const Footer = () => {
   const isDark = useTheme();
@@ -32,29 +31,6 @@ const Footer = () => {
     });
   };
 
-  const handleDiscordClick = () => {
-    ReactGA.event({
-      category: "Navigation",
-      action: "Clicked Discord",
-      label: "Discord"
-    });
-  };
-
-  const handleTwitterClick = () => {
-    ReactGA.event({
-      category: "Navigation",
-      action: "Clicked Twitter",
-      label: "Twitter"
-    });
-  };
-
-  const handleGithubClick = () => {
-    ReactGA.event({
-      category: "Navigation",
-      action: "Clicked GitHub",
-      label: "GitHub"
-    });
-  };
 
   return (
     <div

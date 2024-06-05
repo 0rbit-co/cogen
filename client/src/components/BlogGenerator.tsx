@@ -3,7 +3,6 @@ import { createMessage, executeDryrun } from "../utils/getBlog";
 import Warning from "./Warning";
 import { useTheme } from "../context/ThemeContext";
 import { MdContentCopy } from "react-icons/md";
-import { MdContentCopy } from "react-icons/md";
 
 const BlogGenerator = () => {
   const [topic, setTopic] = useState("");
@@ -86,8 +85,6 @@ const BlogGenerator = () => {
       <div
         className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
           }`}
-        className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
-          }`}
       >
         Generate content through your AO Process using{" "}
         <span className="font-jetbrains text-[#EB8F44]">0rbit</span>
@@ -120,8 +117,8 @@ const BlogGenerator = () => {
       <button
         onClick={handleCopyToClipboard}
         className={`mt-4 flex items-center gap-2 px-4 py-2 border-2 font-semibold rounded-md focus:outline-none ${isDark
-            ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
-            : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
+          ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
+          : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
           }`}
       >
         Copy <MdContentCopy />
