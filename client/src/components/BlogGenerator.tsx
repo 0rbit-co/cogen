@@ -2,12 +2,14 @@ import { useState } from "react";
 import { createMessage, executeDryrun } from "../utils/getBlog";
 import Warning from "./Warning";
 import { useTheme } from "../context/ThemeContext";
+import { MdContentCopy } from "react-icons/md";
 
 const BlogGenerator = () => {
   const [topic, setTopic] = useState("");
   const [heading, setHeading] = useState("");
   const [msg, setMsg] = useState("");
   const [loading, setLoading] = useState(false);
+  const [copySuccess, setCopySuccess] = useState("");
   const { isDark } = useTheme();
 
   const handleGenerateBlog = async () => {
@@ -15,11 +17,11 @@ const BlogGenerator = () => {
     try {
       const generatedMsg = await createMessage(topic);
       setMsg(generatedMsg);
-      console.log("Generated Message: ", msg);
-
+      console.log("Generated Message: ", generatedMsg);
+      console.log(msg);
       const runWithRetry = async (
-        msg: any,
-        retryDelay = 5000,
+        msg: string,
+        retryDelay = 2000,
         retryCount = 0
       ) => {
         try {
@@ -57,9 +59,22 @@ const BlogGenerator = () => {
       }
     } catch (error) {
       console.error("Error sending topic:", error);
-      setHeading("Please Try Again!");
+      setHeading("Connect your Wallet!");
       setLoading(false);
     }
+  };
+
+  const handleCopyToClipboard = () => {
+    navigator.clipboard
+      .writeText(heading)
+      .then(() => {
+        setCopySuccess("Copied!");
+        setTimeout(() => setCopySuccess(""), 2000);
+      })
+      .catch((err) => {
+        console.error("Failed to copy: ", err);
+        setCopySuccess("Failed to copy!");
+      });
   };
 
   return (
@@ -71,8 +86,8 @@ const BlogGenerator = () => {
         className={`text-center text-[35px] font-medium font-raleway leading-[44.93px] ${isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
           }`}
       >
-        Lorem ipsum dolor sit amet consectetur Lorem ipsum dolor sit amet
-        consectetur
+        Generate content through your AO Process using{" "}
+        <span className="font-jetbrains text-[#EB8F44]">0rbit</span>
       </div>
       <div className="flex items-center gap-8 mt-8">
         <div className="">
@@ -81,31 +96,47 @@ const BlogGenerator = () => {
             id="topic"
             value={topic}
             onChange={(e) => setTopic(e.target.value)}
-            className={`w-[705px] h-[52px] bg-transparent rounded-[7px] border-2 px-6 ${isDark
-              ? "border-[#DCE6C2] text-[#DCE6C2]"
-              : "border-black text-black"
+            className={`w-[705px] h-[52px] rounded-[7px] border-2 px-6 ${isDark
+              ? "border-[#485330] text-[#F6FAE3] bg-[#404536] placeholder:text-[#F6FAE3] font-wide"
+              : "border-[#82857A] text-[#25291C] bg-[#DADCD4] placeholder:text-[#25291C]"
               }`}
             placeholder="Add Your Topic Here"
+            required
           />
         </div>
         <button
           onClick={handleGenerateBlog}
-          disabled={loading}
-          className={`w-40 py-2 border-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 ${loading ? "cursor-not-allowed" : ""
-            } ${isDark
-              ? "text-black bg-[#EB8F44] border-transparent hover:bg-transparent hover:border-2 hover:border-[#EB8F44] hover:text-[#EB8F44]"
-              : "text-white bg-black border-transparent hover:bg-transparent hover:border-2 hover:border-black hover:text-black"
+          className={`w-40 py-2 border-2 font-semibold rounded-md focus:outline-none ${isDark
+            ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
+            : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
             }`}
         >
           Generate Blog!
         </button>
       </div>
+      <button
+        onClick={handleCopyToClipboard}
+        className={`mt-4 flex items-center gap-2 px-4 py-2 border-2 font-semibold rounded-md focus:outline-none ${isDark
+          ? "text-black bg-[#EB8F44] border-transparent hover:bg-[#EB8F44]/50 hover:border-2 hover:border-[#EB8F44]"
+          : "text-white bg-[#25291C] border-transparent hover:bg-[#25291C]/90 hover:border-2 hover:border-[#25291C]"
+          }`}
+      >
+        Copy <MdContentCopy />
+      </button>
+      {copySuccess && (
+        <div
+          className={`mt-2 text-sm font-medium ${isDark ? "text-[#DCE6C2]" : "text-[#25291C]"
+            }`}
+        >
+          {copySuccess}
+        </div>
+      )}
       <div className="w-full flex justify-center">
         {loading && (
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 h-80 flex justify-center items-center ${isDark
-              ? "bg-[#404536]/20 border-gray-500"
-              : "bg-gray-200 border-gray-400"
+              ? "bg-[#404536]/20 border-[#485330]"
+              : "bg-[#CFD1CA] border-[#82857A]"
               }`}
           >
             <div className="text-xl font-bold flex">
@@ -126,8 +157,8 @@ const BlogGenerator = () => {
         {!loading && heading && (
           <div
             className={`border-2 w-3/4 rounded-lg mt-10 py-10 min-h-80 flex justify-center items-center ${isDark
-              ? "bg-[#404536]/20 border-gray-500"
-              : "bg-gray-200 border-gray-400"
+              ? "bg-[#404536]/20 border-[#485330]"
+              : "bg-[#DADCD4] border-[#7C8073]"
               }`}
           >
             <div

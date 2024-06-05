@@ -9,7 +9,7 @@ const LogoNavbar = () => {
     <div className="flex justify-between px-8 py-4">
       <div>
         <a href="https://0rbit.co" target="_blank" rel="noopener noreferrer">
-          <img src={isDark ? lightLogo : logo} alt="Logo" />
+          <img src={isDark ? logo : lightLogo} alt="Logo" />
         </a>
       </div>
     </div>

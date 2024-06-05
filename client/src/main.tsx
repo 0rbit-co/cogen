@@ -4,6 +4,13 @@ import App from "./App.tsx";
 import "./index.css";
 import { ArweaveWalletKit } from "arweave-wallet-kit";
 import { ThemeProvider } from "./context/ThemeContext";
+import ReactGA from "react-ga4";
+
+ReactGA.initialize(import.meta.env.VITE_GA_TAG);
+ReactGA.send({
+  hitType: "pageview",
+  page: window.location.pathname,
+});
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
