@@ -11,6 +11,7 @@ Usage:
 4. The generated content will be displayed on the frontend.
 
 <hr />
+
 ## Setup
 
 To set up the repository, follow these steps:
