@@ -3,7 +3,7 @@ import { createDataItemSigner, message, dryrun } from "@permaweb/aoconnect";
 export const createMessage = async (topic: string) => {
   try {
     const msg = await message({
-      process: "CB0wY0UgCwnD4t8o_x7pbiICrVk01gCtvUe6mXDFJeA",
+      process: "CB0wY0UgCwnD4t8o_x7pbiICrVk01gCtvUe6mXDFJeA", // Replace with your Process ID
       signer: createDataItemSigner(window.arweaveWallet),
       tags: [
         { name: "Action", value: "Post-Topic" },

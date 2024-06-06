@@ -4,7 +4,19 @@ import Warning from "./Warning";
 import { useTheme } from "../context/ThemeContext";
 import { MdContentCopy } from "react-icons/md";
 
+/**
+ * BlogGenerator component
+ *
+ * This component allows users to generate a blog post by providing a topic.
+ * It utilizes the `createMessage` and `executeDryrun` functions from the `getBlog` utility
+ * to generate the blog content and heading. The generated content is displayed in the UI,
+ * and users can copy the heading to the clipboard.
+ *
+ * The component also supports a dark mode theme, which can be toggled using the `ThemeContext`.
+ */
+
 const BlogGenerator = () => {
+  // State variables
   const [topic, setTopic] = useState("");
   const [heading, setHeading] = useState("");
   const [msg, setMsg] = useState("");
@@ -12,6 +24,18 @@ const BlogGenerator = () => {
   const [copySuccess, setCopySuccess] = useState("");
   const { isDark } = useTheme();
 
+  /**
+   * Handles the generation of the blog content and heading.
+   *
+   * This function is called when the user clicks the "Generate Blog!" button.
+   * It utilizes the `createMessage` and `executeDryrun` functions from the `getBlog` utility
+   * to generate the blog content and heading, respectively.
+   *
+   * If the generation is successful, the generated heading is displayed in the UI.
+   * If an error occurs, error messages are displayed or retried up to 5 times with a delay of 2 seconds.
+   *
+   * @async
+   */
   const handleGenerateBlog = async () => {
     setLoading(true);
     try {
@@ -64,6 +88,14 @@ const BlogGenerator = () => {
     }
   };
 
+  /**
+   * Handles copying the generated blog heading to the clipboard.
+   *
+   * This function is called when the user clicks the "Copy" button.
+   * It utilizes the `navigator.clipboard.writeText` API to copy the generated heading to the clipboard.
+   * If the copy operation is successful, a success message is displayed for 2 seconds.
+   * If an error occurs, an error message is displayed.
+   */
   const handleCopyToClipboard = () => {
     navigator.clipboard
       .writeText(heading)
@@ -77,6 +109,7 @@ const BlogGenerator = () => {
       });
   };
 
+  // JSX rendering
   return (
     <div
       className={`flex flex-col items-center justify-center pt-10 ${
