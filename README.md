@@ -1,8 +1,6 @@
 # Content Generator Using 0rbit 💫
 <hr />
 
-**Powered by 0rbit 💫**
-
 Usage:
 
 1. Connect your wallet by following the on-screen instructions.
@@ -61,6 +59,9 @@ cd process
 3. Add the process ID inside the `client/utils/getBlog.ts` file.
 
 <hr />
+
+**Powered by 0rbit 💫**
+
 The 0rbit process allows us to bring any data from the outside world to our AO process, enabling seamless integration and content generation.
 <br />
 Feel free to explore the code and customize it according to your needs. If you have any questions or suggestions, please open an issue or submit a pull request.
